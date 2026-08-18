@@ -1,19 +1,29 @@
-UNICARE CLEANING V3.1 PREMIUM
+UNICARE CLEANING V4 — BREVO
 
-Como postar no Netlify:
-1. Extraia este ZIP.
-2. Arraste a pasta extraída para Netlify > Sites > Add new site > Deploy manually.
-3. Confirme que index.html, style.css, script.js, robots.txt e sitemap.xml estão na raiz.
-4. Depois do deploy, conecte o domínio unicarecleaning.com.
-5. No Google Search Console, envie: https://unicarecleaning.com/sitemap.xml
+STACK
+- Site estático em HTML, CSS e JavaScript
+- Netlify Function para integração segura com a API v3 do Brevo
+- Sem Formspree
 
-Incluído:
-- SEO básico e local
-- GEO para Bothell, Bellevue, Kirkland, Redmond, Woodinville e Kenmore
-- Schema LocalBusiness + Service
-- robots.txt
-- sitemap.xml
-- Crédito: Website by Rinko Digital
+PUBLICAÇÃO
+1. Leia BREVO-SETUP.txt e configure as listas, gatilhos e variáveis.
+2. Conecte o repositório ao Netlify ou publique usando a Netlify CLI.
+3. Não use apenas o deploy manual por arrastar arquivos: a função do Brevo precisa ser processada.
+4. Depois do deploy, conecte unicarecleaning.com.
+5. No Google Search Console, envie https://unicarecleaning.com/sitemap.xml.
 
-- FAQ visual no site
-- FAQPage Schema para SEO
+FLUXOS CONECTADOS
+- Home Assessment → BREVO_ASSESSMENT_LIST_ID = 17
+- Lista de espera → BREVO_WAITLIST_LIST_ID = 18
+- The Science of Cleaning → BREVO_BOOK_LIST_ID = 19
+
+ARQUIVOS DA INTEGRAÇÃO
+- netlify/functions/brevo-submit.mjs
+- netlify.toml
+- _redirects
+- BREVO-SETUP.txt
+
+SEGURANÇA
+- A chave BREVO_API_KEY fica somente nas variáveis de ambiente do Netlify.
+- O navegador nunca recebe a chave.
+- Todos os formulários possuem campo anti-spam invisível e validação no servidor.

@@ -5,10 +5,29 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Home Assessment | Unicare Cleaning</title>
   <meta name="description" content="Tell Unicare Cleaning about your home, routines, materials and sensitivities so we can prepare a thoughtful, personalized home assessment.">
-  <meta name="robots" content="index,follow">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <meta name="author" content="Unicare Cleaning">
   <meta name="theme-color" content="#f8f6f1">
   <link rel="canonical" href="https://unicarecleaning.com/assessment.html">
-  <link rel="icon" href="assets/favicon.ico">
+  <link rel="alternate" hreflang="en-US" href="https://unicarecleaning.com/assessment.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="assets/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="manifest" href="assets/site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="Unicare Cleaning">
+  <meta property="og:title" content="Personalized Home Assessment | Unicare Cleaning">
+  <meta property="og:description" content="Tell us about your home, routines, materials and priorities so Unicare Cleaning can prepare a thoughtful service recommendation.">
+  <meta property="og:url" content="https://unicarecleaning.com/assessment.html">
+  <meta property="og:image" content="https://unicarecleaning.com/assets/img2.jpg">
+  <meta property="og:image:alt" content="Thoughtfully arranged home-care essentials in a sunlit space">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Personalized Home Assessment | Unicare Cleaning">
+  <meta name="twitter:description" content="A detailed first step toward thoughtful, personalized home care.">
+  <meta name="twitter:image" content="https://unicarecleaning.com/assets/img2.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +37,9 @@
     html{scroll-behavior:smooth}
     body{margin:0;background:var(--warm);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
     a{color:inherit}
+    :focus-visible{outline:2px solid #9b8768;outline-offset:4px}
+    .skip-link{position:fixed;top:10px;left:10px;z-index:100;background:#fff;padding:11px 16px;transform:translateY(-150%);transition:transform .2s;text-decoration:none;font-weight:700}
+    .skip-link:focus{transform:none}
     button,input,select,textarea{font:inherit}
     .shell{width:min(calc(100% - 36px),var(--max));margin:auto}
     .topbar{border-bottom:1px solid var(--line);background:rgba(248,246,241,.94);position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
@@ -73,16 +95,32 @@
     .success p{color:var(--muted);max-width:600px;margin:0 auto 26px}
     .error-box{background:#fff0ee;border:1px solid #dfaaa5;color:#742820;padding:13px 15px;margin-top:18px;font-size:.88rem}
     .error-box[hidden]{display:none}
+    .honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
     footer{background:#181613;color:#eee7dc;padding:38px 0;font-size:.8rem}
     .footer{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+    .rinko-credit{color:#eee7dc;text-decoration:none;border-bottom:1px solid rgba(238,231,220,.35)}
     @media(max-width:760px){
       .hero{grid-template-columns:1fr;padding-top:48px;gap:22px}.grid{grid-template-columns:1fr}.span-2{grid-column:auto}
       .step{padding:32px 22px}.actions{padding:18px 22px}.step-head{grid-template-columns:42px 1fr;gap:12px}
       .choice-grid{grid-template-columns:1fr}.nav{min-height:68px}.back{font-size:.62rem}
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "@id":"https://unicarecleaning.com/assessment.html#webpage",
+    "url":"https://unicarecleaning.com/assessment.html",
+    "name":"Home Assessment | Unicare Cleaning",
+    "description":"A personalized home assessment covering household routines, priorities, materials and sensitivities.",
+    "isPartOf":{"@id":"https://unicarecleaning.com/#website"},
+    "about":{"@id":"https://unicarecleaning.com/#business"},
+    "inLanguage":"en-US"
+  }
+  </script>
 </head>
 <body>
+<a class="skip-link" href="#assessment-content">Skip to assessment</a>
 <header class="topbar">
   <div class="shell nav">
     <a class="logo" href="/" aria-label="Unicare Cleaning home">UNICARE <span>Cleaning</span></a>
@@ -90,7 +128,7 @@
   </div>
 </header>
 
-<main class="shell">
+<main class="shell" id="assessment-content">
   <section class="hero">
     <div>
       <p class="eyebrow">Personalized home care</p>
@@ -107,9 +145,9 @@
     <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
   </div>
 
-  <form class="assessment" id="assessmentForm" action="https://formspree.io/f/xpqkodow" method="POST">
-    <input type="hidden" name="_subject" value="New Unicare Home Assessment">
-    <input type="hidden" name="form_type" value="Home Assessment">
+  <form class="assessment" id="assessmentForm" action="/api/brevo-submit" method="POST">
+    <input type="hidden" name="form_type" value="assessment">
+    <div class="honeypot" aria-hidden="true"><label for="assessment-website">Website</label><input id="assessment-website" name="_website" tabindex="-1" autocomplete="off"></div>
 
     <section class="step" data-step="1">
       <div class="step-head">
@@ -301,6 +339,7 @@
     <div>© Unicare Cleaning</div>
     <div>Bothell • Bellevue • Kirkland</div>
     <div><a href="mailto:contact@unicarecleaning.com">contact@unicarecleaning.com</a></div>
+    <div><a class="rinko-credit" href="https://rinkodigital.com/" target="_blank" rel="noopener">Website by Rinko Digital ↗</a></div>
   </div>
 </footer>
 
@@ -319,7 +358,7 @@
   var current=0;
   var storageKey='unicare-home-assessment-draft-v1';
 
-  function showStep(index){
+  function showStep(index,shouldScroll){
     current=index;
     steps.forEach(function(step,i){step.hidden=i!==current;});
     back.hidden=current===0;
@@ -329,7 +368,9 @@
     document.getElementById('progressName').textContent=names[current];
     document.getElementById('progressBar').style.width=((current+1)/steps.length*100)+'%';
     errorBox.hidden=true;
-    window.scrollTo({top:Math.max(0,document.querySelector('.progress-wrap').offsetTop-92),behavior:'smooth'});
+    if(shouldScroll!==false){
+      window.scrollTo({top:Math.max(0,document.querySelector('.progress-wrap').offsetTop-92),behavior:'smooth'});
+    }
   }
 
   function validateStep(){
@@ -353,15 +394,21 @@
     return valid;
   }
 
-  function saveDraft(){
+  function formFields(){
     var data={};
     new FormData(form).forEach(function(value,key){
-      if(key==='_subject'||key==='form_type')return;
       if(Object.prototype.hasOwnProperty.call(data,key)){
         if(!Array.isArray(data[key]))data[key]=[data[key]];
         data[key].push(value);
       }else data[key]=value;
     });
+    return data;
+  }
+
+  function saveDraft(){
+    var data=formFields();
+    delete data.form_type;
+    delete data._website;
     try{localStorage.setItem(storageKey,JSON.stringify(data));saveNote.textContent='Progress saved on this device.';}catch(e){}
   }
 
@@ -381,8 +428,8 @@
     }catch(e){}
   }
 
-  next.addEventListener('click',function(){if(validateStep()){saveDraft();showStep(current+1);}});
-  back.addEventListener('click',function(){saveDraft();showStep(current-1);});
+  next.addEventListener('click',function(){if(validateStep()){saveDraft();showStep(current+1,true);}});
+  back.addEventListener('click',function(){saveDraft();showStep(current-1,true);});
   form.addEventListener('input',function(){window.clearTimeout(form._saveTimer);form._saveTimer=window.setTimeout(saveDraft,350);});
 
   form.addEventListener('submit',async function(event){
@@ -392,8 +439,13 @@
     submit.textContent='Sending…';
     errorBox.hidden=true;
     try{
-      var response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-      if(!response.ok)throw new Error('Submission failed');
+      var response=await fetch(form.action,{
+        method:'POST',
+        body:JSON.stringify({formType:'assessment',fields:formFields()}),
+        headers:{'Content-Type':'application/json',Accept:'application/json'}
+      });
+      var result=await response.json().catch(function(){return {};});
+      if(!response.ok)throw new Error(result.message||'Submission failed');
       localStorage.removeItem(storageKey);
       steps.forEach(function(step){step.hidden=true;});
       actions.hidden=true;
@@ -402,7 +454,7 @@
       success.hidden=false;
       success.scrollIntoView({behavior:'smooth',block:'center'});
     }catch(error){
-      errorBox.textContent='We could not send the assessment. Please try again or email contact@unicarecleaning.com.';
+      errorBox.textContent=error.message||'We could not send the assessment. Please try again in a moment.';
       errorBox.hidden=false;
       submit.disabled=false;
       submit.textContent='Submit assessment';
@@ -410,7 +462,7 @@
   });
 
   restoreDraft();
-  showStep(0);
+  showStep(0,false);
 })();
 </script>
 </body>

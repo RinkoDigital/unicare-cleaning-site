@@ -1,0 +1,96 @@
+UNICARE CLEANING — CONFIGURAÇÃO DO BREVO
+
+IMPORTANTE
+- Nunca coloque a chave da API no index.html, script.js ou em qualquer arquivo público.
+- As automações #12, #13 e #14 não são IDs de listas.
+- O site precisa dos IDs das três listas de contatos usadas como gatilho.
+
+1. CRIE OU CONFIRME AS LISTAS NO BREVO
+
+Use uma lista separada para cada fluxo:
+- Home Assessment — ID 17
+- UC | Recurring Cleaning Waitlist — ID 18
+- UC | The Science of Cleaning — ID 19
+
+Anote o ID numérico de cada lista.
+
+2. CONFIRME O GATILHO DAS AUTOMAÇÕES
+
+Em cada automação ativa, o primeiro gatilho deve ser:
+"Contato adicionado à lista"
+
+Mapeamento:
+- Automação Home Assessment #12 → lista Home Assessment #17
+- Automação Lista de espera #13 → lista UC | Recurring Cleaning Waitlist #18
+- Automação The Science of Cleaning #14 → lista UC | The Science of Cleaning #19
+
+3. CONFIRME O REMETENTE
+
+No Brevo, o e-mail usado para envio precisa estar cadastrado e verificado.
+Exemplo: contact@unicarecleaning.com
+
+4. CRIE A CHAVE DA API
+
+No Brevo, crie uma chave de API v3 exclusiva para o site.
+Copie a chave apenas no momento de configurar o Netlify.
+
+5. CONFIGURE AS VARIÁVEIS NO NETLIFY
+
+No projeto do Netlify, abra:
+Project configuration > Environment variables
+
+Adicione:
+
+BREVO_API_KEY
+Chave privada da API v3 do Brevo.
+
+BREVO_WAITLIST_LIST_ID
+Valor: 18
+
+BREVO_ASSESSMENT_LIST_ID
+Valor: 17
+
+BREVO_BOOK_LIST_ID
+Valor: 19
+
+BREVO_SENDER_EMAIL
+E-mail de remetente verificado no Brevo.
+
+BREVO_SENDER_NAME
+Opcional. Exemplo: Unicare Cleaning
+
+BREVO_NOTIFICATION_TO
+E-mail que receberá internamente os dados enviados pelos formulários.
+Se não for informado, será usado contact@unicarecleaning.com.
+
+BREVO_ALLOWED_ORIGINS
+Opcional. Use apenas se o formulário também for publicado em outro domínio.
+Separe múltiplas origens por vírgula. Exemplo: https://preview.exemplo.com
+
+As variáveis precisam estar disponíveis para Functions. Depois de salvá-las,
+faça um novo deploy para que sejam aplicadas.
+
+6. PUBLIQUE COM SUPORTE A NETLIFY FUNCTIONS
+
+O envio direto arrastando apenas os arquivos estáticos no Netlify não é suficiente.
+Publique conectando o repositório Git ao Netlify ou usando a Netlify CLI, para que a
+função netlify/functions/brevo-submit.mjs seja preparada e publicada.
+
+7. TESTE OS TRÊS FLUXOS
+
+- Envie um pedido de atualização do livro.
+- Envie uma entrada na lista de espera.
+- Envie um Home Assessment de teste.
+
+Para cada teste, confirme:
+- contato criado ou atualizado no Brevo;
+- contato adicionado à lista correta;
+- automação iniciada;
+- e-mail interno de notificação recebido;
+- e-mail da automação recebido pelo contato de teste.
+
+OBSERVAÇÃO DE PRIVACIDADE
+
+O Home Assessment adiciona ao contato apenas nome e sobrenome. As respostas completas,
+incluindo informações práticas sobre sensibilidades, são enviadas na notificação interna
+do Brevo e não são gravadas como atributos de marketing do contato.

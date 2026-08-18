@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Unicare Cleaning">
+  <rect width="64" height="64" rx="16" fill="#1b1916"/>
+  <path d="M18 16v20c0 10 5.5 15 14 15s14-5 14-15V16h-7v20c0 6-2.4 8.5-7 8.5S25 42 25 36V16z" fill="#f7f3eb"/>
+  <circle cx="48" cy="15" r="3" fill="#b59a72"/>
+</svg>
